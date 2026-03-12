@@ -1,0 +1,26 @@
+name: Sample Capability Triggered
+on:
+  workflow_dispatch:
+    inputs:
+      triggered_by:
+        description: "The source that triggered this workflow"
+        required: true
+        default: "Mission Control"
+      env:
+        description: "Target environment"
+        required: true
+        default: "dev"
+
+jobs:
+  run-capability:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show Payload
+        run: |
+          echo "Triggered by: ${{ github.event.inputs.triggered_by }}"
+          echo "Environment: ${{ github.event.inputs.env }}"
+      - name: Mock Action
+        run: |
+          echo "Running capability deployment..."
+          sleep 5
+          echo "Capability deployed successfully."
