@@ -2,11 +2,12 @@ apiVersion: orchestrator.aeven.io/v1alpha1
 kind: OrchestratorProvider
 metadata:
   name: sample-capability
-  namespace: mission-control
 spec:
   title: "Sample Capability"
   description: "A mock capability discovered from GitHub"
   pipeline:
+    type: github-actions
     workflow: "capability.yaml"
+    ref: "main"
   parameters:
     env: "dev"
